@@ -103,27 +103,19 @@
   .ghost:hover{background:rgba(255,255,255,.06)}
   .brand{margin:28px auto 0;width:110px}
 
-  /* Horizontal: foto fixa à esquerda, formulário rola à direita */
-  @media (orientation:landscape) and (min-width:760px){
-    .page{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-    .hero{position:sticky;top:0;height:100vh;height:100dvh}
-    .hero img{width:100%;height:100%;object-position:50% 60%;
-      -webkit-mask-image:linear-gradient(to right,#000 72%,transparent);mask-image:linear-gradient(to right,#000 72%,transparent)}
-    .side{justify-content:center;padding:6vh 4vw 6vh 1vw}
-  }
-  /* Vertical / telas estreitas: faixa da foto em cima */
-  @media not all and (orientation:landscape) and (min-width:760px){
-    .hero{height:min(40vh, calc(100vw * 924 / 1080))}
-    .hero img{-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent);mask-image:linear-gradient(to bottom,#000 80%,transparent)}
-    .side{padding-top:8px}
-  }
+  /* Foto larga (≈2,8:1) em faixa no alto em qualquer tela; o formulário vem logo abaixo */
+  .hero{height:clamp(200px, 36vh, 440px)}
+  .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;
+    -webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent);mask-image:linear-gradient(to bottom,#000 60%,transparent)}
+  .side{margin-top:-28px}
+  @media (orientation:portrait){ .hero{height:min(32vh, 100vw)} .hero img{object-position:50% 40%} .side{margin-top:0;padding-top:8px} }
   @media (max-width:420px){ .row{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 <div class="page">
   <header class="hero">
-    <img src="/assets/hero.jpg" width="1080" height="924" alt="Conexão Faixa Preta by Full Sales">
+    <img src="/assets/foto-equipe.jpg" width="1640" height="580" alt="Atletas de quimono preto diante do logo da Full Sales em neon vermelho">
   </header>
 
   <main class="side">

@@ -109,12 +109,24 @@
   .gcal a{color:var(--ink)}
   .brand{margin-top:1.4em;width:7em;height:auto}
 
-  /* ── HORIZONTAL (computador, tablet deitado, celular deitado): foto | informações ── */
+  /* ── HORIZONTAL (computador, tablet deitado, celular deitado) ──
+     A foto é larga (≈2,8:1): vira uma faixa no alto com o grupo inteiro,
+     e as informações ficam embaixo em duas colunas. */
   @media (orientation:landscape){
-    .page{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-    .hero img{width:100%;height:100%;object-position:50% 60%;
-      -webkit-mask-image:linear-gradient(to right,#000 72%,transparent);mask-image:linear-gradient(to right,#000 72%,transparent)}
-    .info{--fs:clamp(9px, min(1.3vw, 2.3vh), 22px);padding:2.5vh 4vw 2.5vh 1vw}
+    .page{grid-template-rows:minmax(0,50fr) minmax(0,50fr)}
+    .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;
+      -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent);mask-image:linear-gradient(to bottom,#000 62%,transparent)}
+    .info{--fs:clamp(9px, min(1.12vw, 2.05vh), 20px);padding:0 5vw 2.5vh;margin-top:-5vh}
+    .inner{max-width:74em;display:grid;grid-template-columns:1fr 1.15fr;column-gap:3.5em;align-items:center}
+    .band{grid-column:1 / -1;margin-bottom:1.4em}
+    .col-a{text-align:left;display:flex;flex-direction:column;align-items:flex-start}
+    .col-a .kicker{margin-top:0}
+    .col-a .headline{font-size:2.5em}
+    .col-a .lead{max-width:26em}
+    .col-a .charity{margin-top:1.4em;max-width:28em}
+    .col-b{display:flex;flex-direction:column;align-items:center}
+    .col-b .facts{margin-top:0}
+    .col-b .brand{margin-top:1.2em}
   }
   /* celular deitado: pouca altura, sai o supérfluo */
   @media (orientation:landscape) and (max-height:500px){
@@ -124,9 +136,12 @@
 
   /* ── VERTICAL (celular, tablet em pé): foto em cima, informações embaixo ── */
   @media (orientation:portrait){
+    .col-a,.col-b{display:contents}
+    .kicker{order:1}.facts{order:2}.headline{order:3}.lead{order:4}
+    .countdown{order:5}.actions{order:6}.charity{order:7}.brand{order:8}
     .page{grid-template-rows:auto minmax(0,1fr)}
-    .hero{height:min(38dvh, calc(100vw * 924 / 1080))}
-    .hero img{
+    .hero{height:min(34dvh, 100vw)}
+    .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;
       -webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent),linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
       -webkit-mask-composite:source-in;
       mask-image:linear-gradient(to bottom,#000 80%,transparent),linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
@@ -156,14 +171,23 @@
 <body>
 <div class="page">
   <header class="hero">
-    <img src="/assets/hero.jpg" width="1080" height="924"
-         alt="Conexão Faixa Preta by Full Sales — atletas de quimono preto diante do logo em neon vermelho">
+    <img src="/assets/foto-equipe.jpg" width="1640" height="580"
+         alt="Atletas de quimono preto diante do logo da Full Sales em neon vermelho">
   </header>
 
   <main class="info" id="info">
     <div class="inner">
       <div class="band">Conexão Faixa Preta</div>
+      <div class="col-a">
       <span class="kicker reveal">Você está convidado</span>
+      <h1 class="headline reveal d2">Jiu-jitsu, negócios <b>e conexões</b></h1>
+      <p class="lead reveal d2">
+        Um encontro entre <strong>empresários, atletas e lideranças do esporte</strong>
+        para compartilhar experiências e criar conexões.
+      </p>
+      <p class="charity"><b>Evento beneficente</b> · em apoio a escolas e academias de jiu-jitsu, incentivando o esporte e a educação.</p>
+      </div>
+      <div class="col-b">
       <div class="facts reveal d1">
         <div class="fact date" aria-label="20 de outubro de 2026, terça-feira">
           <span class="day">20</span>
@@ -182,11 +206,6 @@
         </div>
       </div>
 
-      <h1 class="headline reveal d2">Jiu-jitsu, negócios <b>e conexões</b></h1>
-      <p class="lead reveal d2">
-        Um encontro entre <strong>empresários, atletas e lideranças do esporte</strong>
-        para compartilhar experiências e criar conexões.
-      </p>
       <div class="countdown reveal d4" id="countdown" aria-live="polite">
         <div class="unit"><div class="n" data-u="d">--</div><div class="t">dias</div></div>
         <div class="unit"><div class="n" data-u="h">--</div><div class="t">horas</div></div>
@@ -200,8 +219,8 @@
           Inscreva-se
         </a>
       </div>
-      <p class="charity"><b>Evento beneficente</b> · em apoio a escolas e academias de jiu-jitsu, incentivando o esporte e a educação.</p>
       <img class="brand" src="/assets/fss.png" width="156" height="41" alt="FSS — Full Sales System">
+      </div>
     </div>
   </main>
 </div>

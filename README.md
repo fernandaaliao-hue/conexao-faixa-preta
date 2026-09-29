@@ -23,7 +23,7 @@ inscritos.html          painel da equipe
 api/inscricao.js        POST /api/inscricao: valida e grava a inscrição
 api/inscritos.js        GET  /api/inscritos: lista (JSON ou ?formato=csv); exige a chave
 lib/db.js               conexão com o banco e criação da tabela
-assets/                 imagens recortadas do cartaz (original.png fica fora do deploy)
+assets/                 foto-equipe.jpg = foto de fundo (recorte de foto-equipe-original.png, sem logo e sem legenda); os *-original ficam fora do deploy
 conexao-faixa-preta.ics arquivo de agenda (Apple/Outlook)
 vercel.json             URLs sem ".html" e noindex na página da equipe
 ```
