@@ -62,6 +62,7 @@
     background:linear-gradient(90deg,transparent 0%,var(--red-deep) 18%,#c3143a 50%,var(--red-deep) 82%,transparent 100%);
     font-weight:800;font-size:.72em;letter-spacing:.42em;text-transform:uppercase;white-space:nowrap;
   }
+  .logo{width:15em;height:auto;filter:drop-shadow(0 .6em 1.4em rgba(0,0,0,.6))}
   .kicker{color:var(--red);font-weight:800;font-size:.72em;letter-spacing:.42em;text-transform:uppercase;margin-top:1.9em}
   .headline{font-size:2.3em;line-height:1;font-weight:300;text-transform:uppercase;margin-top:.55em;letter-spacing:-.01em}
   .headline b{font-weight:900;font-style:italic}
@@ -118,8 +119,8 @@
       -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent);mask-image:linear-gradient(to bottom,#000 62%,transparent)}
     .info{--fs:clamp(9px, min(1.12vw, 2.05vh), 20px);padding:0 5vw 2.5vh;margin-top:-5vh}
     .inner{max-width:74em;display:grid;grid-template-columns:1fr 1.15fr;column-gap:3.5em;align-items:center}
-    .band{grid-column:1 / -1;margin-bottom:1.4em}
     .col-a{text-align:left;display:flex;flex-direction:column;align-items:flex-start}
+    .col-a .logo{width:17em;margin-bottom:1.2em}
     .col-a .kicker{margin-top:0}
     .col-a .headline{font-size:2.5em}
     .col-a .lead{max-width:26em}
@@ -137,6 +138,8 @@
   /* ── VERTICAL (celular, tablet em pé): foto em cima, informações embaixo ── */
   @media (orientation:portrait){
     .col-a,.col-b{display:contents}
+    .info{overflow:visible}
+    .logo{order:0;width:58%;max-width:17em;margin-top:-21%;position:relative;z-index:2}
     .kicker{order:1}.facts{order:2}.headline{order:3}.lead{order:4}
     .countdown{order:5}.actions{order:6}.charity{order:7}.brand{order:8}
     .page{grid-template-rows:auto minmax(0,1fr)}
@@ -148,8 +151,7 @@
       mask-composite:intersect;
     }
     .info{--fs:clamp(8px, min(3.5vw, 1.72dvh), 18px);justify-content:space-evenly;padding:0 16px 1.5dvh}
-    .band{margin-top:-.2em}
-    .kicker{margin-top:1.2em}
+    .kicker{margin-top:.9em}
     .headline{font-size:1.9em}
     .facts{grid-template-columns:auto 1fr;margin-top:.9em}
     .facts .place{grid-column:1 / -1;border-left:0;border-top:1px solid var(--line)}
@@ -177,8 +179,8 @@
 
   <main class="info" id="info">
     <div class="inner">
-      <div class="band">Conexão Faixa Preta</div>
       <div class="col-a">
+      <img class="logo reveal" src="/assets/logo-cfp.png" width="593" height="444" alt="Conexão Faixa Preta by Full Sales">
       <span class="kicker reveal">Você está convidado</span>
       <h1 class="headline reveal d2">Jiu-jitsu, negócios <b>e conexões</b></h1>
       <p class="lead reveal d2">
