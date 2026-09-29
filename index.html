@@ -62,6 +62,10 @@
     background:linear-gradient(90deg,transparent 0%,var(--red-deep) 18%,#c3143a 50%,var(--red-deep) 82%,transparent 100%);
     font-weight:800;font-size:.72em;letter-spacing:.42em;text-transform:uppercase;white-space:nowrap;
   }
+  .hero-logo{display:none}
+  .col-a,.col-b{display:contents}
+  .logo{order:0}.kicker{order:1}.facts{order:2}.headline{order:3}.lead{order:4}
+  .countdown{order:5}.actions{order:6}.charity{order:7}.brand{order:8}
   .logo{width:15em;height:auto;filter:drop-shadow(0 .6em 1.4em rgba(0,0,0,.6))}
   .kicker{color:var(--red);font-weight:800;font-size:.72em;letter-spacing:.42em;text-transform:uppercase;margin-top:1.9em}
   .headline{font-size:2.3em;line-height:1;font-weight:300;text-transform:uppercase;margin-top:.55em;letter-spacing:-.01em}
@@ -110,24 +114,20 @@
   .gcal a{color:var(--ink)}
   .brand{margin-top:1.4em;width:7em;height:auto}
 
-  /* ── HORIZONTAL (computador, tablet deitado, celular deitado) ──
-     A foto é larga (≈2,8:1): vira uma faixa no alto com o grupo inteiro,
-     e as informações ficam embaixo em duas colunas. */
+  /* ── HORIZONTAL (computador, tablet deitado, celular deitado): foto + logo | informações ──
+     A foto é larga (≈2,8:1): ocupa a parte de cima da coluna e o logo fica embaixo,
+     sobre ela, como no cartaz. Esticar a foto na altura toda ampliaria demais. */
   @media (orientation:landscape){
-    .page{grid-template-rows:minmax(0,50fr) minmax(0,50fr)}
-    .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;
-      -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent);mask-image:linear-gradient(to bottom,#000 62%,transparent)}
-    .info{--fs:clamp(9px, min(1.12vw, 2.05vh), 20px);padding:0 5vw 2.5vh;margin-top:-5vh}
-    .inner{max-width:74em;display:grid;grid-template-columns:1fr 1.15fr;column-gap:3.5em;align-items:center}
-    .col-a{text-align:left;display:flex;flex-direction:column;align-items:flex-start}
-    .col-a .logo{width:17em;margin-bottom:1.2em}
-    .col-a .kicker{margin-top:0}
-    .col-a .headline{font-size:2.5em}
-    .col-a .lead{max-width:26em}
-    .col-a .charity{margin-top:1.4em;max-width:28em}
-    .col-b{display:flex;flex-direction:column;align-items:center}
-    .col-b .facts{margin-top:0}
-    .col-b .brand{margin-top:1.2em}
+    .page{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+    .hero{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+      -webkit-mask-image:linear-gradient(to right,#000 80%,transparent);mask-image:linear-gradient(to right,#000 80%,transparent)}
+    .hero img{width:100%;height:60%;flex:none;object-fit:cover;object-position:50% 40%;
+      -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent)}
+    .hero .hero-logo{display:block;width:auto;height:auto;max-width:74%;max-height:46%;margin-top:-16%;
+      position:relative;object-fit:contain;-webkit-mask-image:none;mask-image:none;
+      filter:drop-shadow(0 1vh 2.4vh rgba(0,0,0,.7))}
+    .logo{display:none}
+    .info{--fs:clamp(9px, min(1.3vw, 2.3vh), 22px);padding:2.5vh 4vw 2.5vh 1vw}
   }
   /* celular deitado: pouca altura, sai o supérfluo */
   @media (orientation:landscape) and (max-height:500px){
@@ -137,11 +137,8 @@
 
   /* ── VERTICAL (celular, tablet em pé): foto em cima, informações embaixo ── */
   @media (orientation:portrait){
-    .col-a,.col-b{display:contents}
     .info{overflow:visible}
     .logo{order:0;width:58%;max-width:17em;margin-top:-21%;position:relative;z-index:2}
-    .kicker{order:1}.facts{order:2}.headline{order:3}.lead{order:4}
-    .countdown{order:5}.actions{order:6}.charity{order:7}.brand{order:8}
     .page{grid-template-rows:auto minmax(0,1fr)}
     .hero{height:min(34dvh, 100vw)}
     .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;
@@ -175,6 +172,7 @@
   <header class="hero">
     <img src="/assets/foto-equipe.jpg" width="1640" height="580"
          alt="Atletas de quimono preto diante do logo da Full Sales em neon vermelho">
+    <img class="hero-logo" src="/assets/logo-cfp.png" width="593" height="444" alt="" aria-hidden="true">
   </header>
 
   <main class="info" id="info">
