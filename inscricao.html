@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inscrição — Conexão Faixa Preta</title>
+<meta name="description" content="Inscreva-se no Conexão Faixa Preta · 20 de outubro de 2026, 19h às 22h, Espaço Full Sales — Vila Olímpia, São Paulo.">
+<meta name="theme-color" content="#0a0a0b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Conexão Faixa Preta — Inscrição">
+<meta property="og:description" content="20 de outubro de 2026 · 19h às 22h · Espaço Full Sales, Vila Olímpia — SP">
+<meta property="og:image" content="https://conexao-faixa-preta.vercel.app/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,700;0,800;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0b;--ink:#f4f4f5;--muted:#a1a1aa;--red:#ff1f4b;--red-deep:#9e0f2c;
+    --line:rgba(255,255,255,.12);--field:rgba(255,255,255,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg)}
+  body{font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);
+       -webkit-font-smoothing:antialiased;line-height:1.45;min-height:100vh}
+  img{display:block;max-width:100%}
+
+  .page{min-height:100vh;min-height:100dvh;display:grid;position:relative;
+    background:radial-gradient(ellipse 60% 45% at 50% 0%,rgba(255,31,75,.16),transparent 70%),var(--bg)}
+  .hero{position:relative;overflow:hidden;display:flex;justify-content:center}
+  .hero img{height:100%;width:auto;max-width:none;object-fit:cover}
+
+  .side{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:28px 16px 40px}
+  .inner{width:100%;max-width:520px}
+
+  .back{display:inline-flex;align-items:center;gap:.4em;color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.08em}
+  .back:hover{color:var(--ink)}
+  .back svg{width:16px;height:16px}
+  .kicker{display:block;margin-top:18px;color:var(--red);font-weight:800;font-size:12px;letter-spacing:.42em;text-transform:uppercase}
+  h1{margin-top:6px;font-size:clamp(30px,4.2vw,44px);line-height:1;font-weight:300;text-transform:uppercase;letter-spacing:-.01em}
+  h1 b{font-weight:900;font-style:italic}
+  .when{margin-top:12px;color:#d4d4d8;font-size:15px}
+  .when strong{color:var(--ink)}
+
+  form{margin-top:26px;display:grid;gap:16px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .f{display:flex;flex-direction:column;gap:6px;min-width:0}
+  label,.legend{font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#d4d4d8}
+  input,select{
+    width:100%;min-height:48px;padding:0 14px;border-radius:10px;border:1px solid var(--line);
+    background:var(--field);color:var(--ink);font:inherit;font-size:16px;outline:none;
+    transition:border-color .15s ease,background .15s ease;
+  }
+  select{appearance:none;-webkit-appearance:none;padding-right:40px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;background-size:16px}
+  select option{background:#18181b;color:var(--ink)}
+  input::placeholder{color:#71717a}
+  input:focus,select:focus{border-color:var(--red);background:rgba(255,31,75,.06)}
+  .f.bad input,.f.bad select{border-color:#ff5c7c}
+  .err{min-height:0;font-size:12.5px;color:#ff8aa1}
+  .err:empty{display:none}
+
+  .choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .choice label{
+    display:flex;align-items:center;justify-content:center;gap:.5em;min-height:48px;border-radius:10px;
+    border:1px solid var(--line);background:var(--field);cursor:pointer;
+    font-size:14px;letter-spacing:.14em;color:var(--ink);transition:all .15s ease;
+  }
+  .choice input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+  .choice input:checked + span{color:#fff}
+  .choice label:has(input:checked){border-color:var(--red);background:rgba(255,31,75,.14)}
+  .choice label:has(input:focus-visible){outline:2px solid var(--red);outline-offset:2px}
+  .hide{display:none!important}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .btn{
+    margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    min-height:54px;border:0;border-radius:999px;cursor:pointer;width:100%;
+    font:inherit;font-weight:800;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:#fff;
+    background:linear-gradient(180deg,#ff2d57,#d9123c);box-shadow:0 12px 32px -12px rgba(255,31,75,.75);
+    transition:transform .15s ease,opacity .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+  .btn[disabled]{opacity:.6;cursor:progress;transform:none}
+  .btn svg{width:18px;height:18px}
+  .fine{font-size:12px;color:var(--muted);text-align:center}
+  .alert{padding:12px 14px;border-radius:10px;border:1px solid rgba(255,92,124,.5);background:rgba(255,31,75,.08);color:#ffc2cf;font-size:14px}
+  .alert:empty{display:none}
+
+  .done{margin-top:30px;text-align:center;padding:34px 22px;border:1px solid var(--line);border-radius:16px;
+        background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01))}
+  .done .ok{width:58px;height:58px;margin:0 auto;border-radius:50%;display:grid;place-items:center;
+            background:linear-gradient(180deg,#ff2d57,#d9123c)}
+  .done .ok svg{width:28px;height:28px}
+  .done h2{margin-top:16px;font-size:26px;font-weight:900;font-style:italic;text-transform:uppercase}
+  .done p{margin-top:8px;color:#d4d4d8}
+  .done .links{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .ghost{display:inline-flex;align-items:center;gap:.5em;min-height:44px;padding:0 18px;border-radius:999px;
+         border:1px solid rgba(255,255,255,.24);color:var(--ink);text-decoration:none;
+         font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .ghost:hover{background:rgba(255,255,255,.06)}
+  .brand{margin:28px auto 0;width:110px}
+
+  /* Horizontal: foto fixa à esquerda, formulário rola à direita */
+  @media (orientation:landscape) and (min-width:760px){
+    .page{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+    .hero{position:sticky;top:0;height:100vh;height:100dvh}
+    .hero img{width:100%;height:100%;object-position:50% 60%;
+      -webkit-mask-image:linear-gradient(to right,#000 72%,transparent);mask-image:linear-gradient(to right,#000 72%,transparent)}
+    .side{justify-content:center;padding:6vh 4vw 6vh 1vw}
+  }
+  /* Vertical / telas estreitas: faixa da foto em cima */
+  @media not all and (orientation:landscape) and (min-width:760px){
+    .hero{height:min(40vh, calc(100vw * 924 / 1080))}
+    .hero img{-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent);mask-image:linear-gradient(to bottom,#000 80%,transparent)}
+    .side{padding-top:8px}
+  }
+  @media (max-width:420px){ .row{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <img src="/assets/hero.jpg" width="1080" height="924" alt="Conexão Faixa Preta by Full Sales">
+  </header>
+
+  <main class="side">
+    <div class="inner">
+      <a class="back" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        Voltar ao convite
+      </a>
+      <span class="kicker">Conexão Faixa Preta</span>
+      <h1>Garanta sua <b>vaga</b></h1>
+      <p class="when"><strong>20 de outubro · terça · 19h às 22h</strong><br>Espaço Full Sales · Vila Olímpia, SP</p>
+
+      <form id="form" novalidate>
+        <div class="f" data-f="nome">
+          <label for="nome">Nome completo</label>
+          <input id="nome" name="nome" autocomplete="name" required maxlength="120" placeholder="Seu nome e sobrenome">
+          <span class="err"></span>
+        </div>
+
+        <div class="row">
+          <div class="f" data-f="celular">
+            <label for="celular">Celular (WhatsApp)</label>
+            <input id="celular" name="celular" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="(11) 91234-5678" maxlength="16">
+            <span class="err"></span>
+          </div>
+          <div class="f" data-f="email">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="160" placeholder="voce@email.com">
+            <span class="err"></span>
+          </div>
+        </div>
+
+        <div class="f" data-f="faixa_etaria">
+          <label for="faixa_etaria">Faixa etária</label>
+          <select id="faixa_etaria" name="faixa_etaria" required>
+            <option value="" disabled selected>Selecione</option>
+            <option>Menos de 18</option><option>18 a 24</option><option>25 a 34</option>
+            <option>35 a 44</option><option>45 a 54</option><option>55 ou mais</option>
+          </select>
+          <span class="err"></span>
+        </div>
+
+        <div class="row">
+          <div class="f" data-f="faixa">
+            <label for="faixa">Faixa de jiu-jitsu</label>
+            <select id="faixa" name="faixa" required>
+              <option value="" disabled selected>Selecione</option>
+              <option>Não treino</option><option>Branca</option><option>Azul</option><option>Roxa</option>
+              <option>Marrom</option><option>Preta</option><option>Coral</option><option>Vermelha</option>
+            </select>
+            <span class="err"></span>
+          </div>
+          <div class="f" data-f="grau" id="grauBox">
+            <label for="grau">Grau</label>
+            <select id="grau" name="grau">
+              <option>Sem grau</option><option>1º grau</option><option>2º grau</option><option>3º grau</option>
+              <option>4º grau</option><option>5º grau</option><option>6º grau</option><option>7º grau</option>
+              <option>8º grau</option><option>9º grau</option>
+            </select>
+            <span class="err"></span>
+          </div>
+        </div>
+
+        <div class="f" data-f="beneficente" role="radiogroup" aria-labelledby="lb-benef">
+          <span class="legend" id="lb-benef">Já participa de algum projeto beneficente?</span>
+          <div class="choice">
+            <label><input type="radio" name="beneficente" value="sim"><span>Sim</span></label>
+            <label><input type="radio" name="beneficente" value="nao"><span>Não</span></label>
+          </div>
+          <span class="err"></span>
+        </div>
+
+        <div class="f hide" data-f="projeto" id="projetoBox">
+          <label for="projeto">Qual projeto? <span style="color:var(--muted);letter-spacing:.1em">(opcional)</span></label>
+          <input id="projeto" name="projeto" maxlength="200" placeholder="Nome do projeto ou instituição">
+          <span class="err"></span>
+        </div>
+
+        <div class="hp" aria-hidden="true"><label>Site <input name="site" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="alert" id="alert" role="alert"></div>
+        <button class="btn" type="submit" id="enviar">
+          Confirmar inscrição
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="fine">Seus dados são usados apenas pela organização do evento.</p>
+      </form>
+
+      <section class="done hide" id="done" aria-live="polite">
+        <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h2 id="doneTitle">Inscrição confirmada</h2>
+        <p id="doneText">Nos vemos no dia 20 de outubro, às 19h, no Espaço Full Sales.</p>
+        <div class="links">
+          <a class="ghost" href="/conexao-faixa-preta.ics" download>Salvar na agenda</a>
+          <a class="ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua+Gomes+de+Carvalho%2C+1996+-+Vila+Ol%C3%ADmpia%2C+S%C3%A3o+Paulo+-+SP">Como chegar</a>
+        </div>
+      </section>
+
+      <img class="brand" src="/assets/fss.png" width="156" height="41" alt="FSS — Full Sales System">
+    </div>
+  </main>
+</div>
+
+<script>
+  const form = document.getElementById("form");
+  const $ = (id) => document.getElementById(id);
+
+  // máscara do celular: (11) 91234-5678
+  $("celular").addEventListener("input", (e) => {
+    let d = e.target.value.replace(/\D/g, "").slice(0, 11);
+    let v = d;
+    if (d.length > 2) v = `(${d.slice(0, 2)}) ${d.slice(2)}`;
+    if (d.length > 6) v = `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}`;
+    e.target.value = v;
+  });
+
+  // quem não treina não tem grau
+  const syncGrau = () => $("grauBox").classList.toggle("hide", $("faixa").value === "Não treino");
+  $("faixa").addEventListener("change", syncGrau);
+
+  // "Qual projeto?" só aparece para quem respondeu Sim
+  form.querySelectorAll('input[name="beneficente"]').forEach((r) =>
+    r.addEventListener("change", () => $("projetoBox").classList.toggle("hide", form.beneficente.value !== "sim")));
+
+  function mostrarErros(erros) {
+    form.querySelectorAll(".f").forEach((f) => {
+      const msg = erros[f.dataset.f] || "";
+      f.classList.toggle("bad", !!msg);
+      f.querySelector(".err").textContent = msg;
+    });
+    const primeiro = form.querySelector(".f.bad input, .f.bad select");
+    if (primeiro) primeiro.focus();
+  }
+
+  function validarLocal(d) {
+    const e = {};
+    if (d.nome.trim().length < 3 || !d.nome.trim().includes(" ")) e.nome = "Informe nome e sobrenome.";
+    if (!/^\d{10,11}$/.test(d.celular.replace(/\D/g, ""))) e.celular = "Celular com DDD, ex.: (11) 91234-5678.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email.trim())) e.email = "E-mail inválido.";
+    if (!d.faixa_etaria) e.faixa_etaria = "Escolha a faixa etária.";
+    if (!d.faixa) e.faixa = "Escolha a faixa.";
+    if (!d.beneficente) e.beneficente = "Responda sim ou não.";
+    return e;
+  }
+
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    $("alert").textContent = "";
+    const d = Object.fromEntries(new FormData(form));
+    d.faixa_etaria ??= ""; d.faixa ??= ""; d.beneficente ??= "";
+    const erros = validarLocal(d);
+    mostrarErros(erros);
+    if (Object.keys(erros).length) return;
+
+    const btn = $("enviar");
+    btn.disabled = true; btn.firstChild.textContent = "Enviando… ";
+    try {
+      const r = await fetch("/api/inscricao", {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(d),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) {
+        const nome = d.nome.trim().split(" ")[0];
+        $("doneTitle").textContent = j.nova === false ? "Inscrição atualizada" : "Inscrição confirmada";
+        $("doneText").textContent = `${nome}, nos vemos no dia 20 de outubro, às 19h, no Espaço Full Sales.`;
+        form.classList.add("hide"); $("done").classList.remove("hide");
+        $("done").scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      if (j.erros) mostrarErros(j.erros);
+      else $("alert").textContent = j.erro || "Não conseguimos enviar. Tente de novo.";
+    } catch {
+      $("alert").textContent = "Sem conexão. Confira sua internet e tente de novo.";
+    } finally {
+      btn.disabled = false; btn.firstChild.textContent = "Confirmar inscrição ";
+    }
+  });
+</script>
+</body>
+</html>

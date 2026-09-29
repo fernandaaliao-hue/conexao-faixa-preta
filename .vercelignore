@@ -1,0 +1,5 @@
+assets/original.png
+.vercel
+.env*
+node_modules
+.admin_key

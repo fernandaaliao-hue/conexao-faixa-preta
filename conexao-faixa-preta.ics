@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Full Sales//Conexao Faixa Preta//PT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:conexao-faixa-preta-20261020@fullsalessystem.com
+DTSTAMP:20260929T120000Z
+DTSTART:20261020T220000Z
+DTEND:20261021T010000Z
+SUMMARY:Conexão Faixa Preta
+DESCRIPTION:Jiu-jitsu\, negócios e conexões. Evento beneficente em apoio a escolas e academias de jiu-jitsu.
+LOCATION:Espaço Full Sales - Rua Gomes de Carvalho\, 1996 - Vila Olímpia\, São Paulo
+BEGIN:VALARM
+TRIGGER:-PT3H
+ACTION:DISPLAY
+DESCRIPTION:Conexão Faixa Preta hoje às 19h
+END:VALARM
+END:VEVENT
+END:VCALENDAR

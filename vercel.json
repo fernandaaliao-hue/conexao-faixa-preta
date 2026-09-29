@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "headers": [
+    { "source": "/conexao-faixa-preta.ics",
+      "headers": [{ "key": "Content-Type", "value": "text/calendar; charset=utf-8" }] },
+    { "source": "/inscritos",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
+}
