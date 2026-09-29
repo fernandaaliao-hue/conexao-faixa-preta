@@ -123,8 +123,10 @@
       -webkit-mask-image:linear-gradient(to right,#000 80%,transparent);mask-image:linear-gradient(to right,#000 80%,transparent)}
     .hero img{width:100%;height:60%;flex:none;object-fit:cover;object-position:50% 40%;
       -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent)}
-    .hero .hero-logo{display:block;width:auto;height:auto;max-width:74%;max-height:46%;margin-top:-16%;
-      position:relative;object-fit:contain;-webkit-mask-image:none;mask-image:none;
+    /* ancorado pela ALTURA: começa na metade da coluna, sempre abaixo dos rostos
+       (margem em % seria relativa à largura e subia para o rosto em tela larga) */
+    .hero .hero-logo{display:block;width:auto;height:auto;max-width:74%;max-height:44%;
+      position:absolute;top:52%;left:50%;transform:translateX(-50%);object-fit:contain;-webkit-mask-image:none;mask-image:none;
       filter:drop-shadow(0 1vh 2.4vh rgba(0,0,0,.7))}
     .logo{display:none}
     .info{--fs:clamp(9px, min(1.3vw, 2.3vh), 22px);padding:2.5vh 4vw 2.5vh 1vw}
